@@ -13,6 +13,7 @@ gem 'faker'
 gem 'pry'
 gem 'rails-erd'
 gem 'shoulda-matchers', '~> 3.1'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
