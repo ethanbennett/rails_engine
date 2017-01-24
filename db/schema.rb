@@ -60,11 +60,13 @@ ActiveRecord::Schema.define(version: 20170124200337) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "credit_card_number"
+    t.string   "credit_card_number"
     t.string   "result"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
     t.string   "credit_card_expiration_date"
+    t.integer  "invoice_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["invoice_id"], name: "index_transactions_on_invoice_id", using: :btree
   end
 
   add_foreign_key "invoice_items", "invoices"
@@ -72,4 +74,5 @@ ActiveRecord::Schema.define(version: 20170124200337) do
   add_foreign_key "invoices", "customers"
   add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
+  add_foreign_key "transactions", "invoices"
 end
