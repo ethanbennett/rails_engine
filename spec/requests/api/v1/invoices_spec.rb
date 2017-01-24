@@ -11,7 +11,8 @@ describe "Invoices API" do
     expect(invoices.count).to eq(3)
     expect(invoice).to be_a(Hash)
     expect(invoice).to have_key("id")
-    expect(invoice).to have_key("name")
-    expect(invoice).to have_key("description")
+    expect(invoice).to have_key("customer_id")
+    expect(invoice).to have_key("merchant_id")
+    expect(invoice).to have_key("status")
   end
 end
