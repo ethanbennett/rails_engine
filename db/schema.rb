@@ -27,12 +27,11 @@ ActiveRecord::Schema.define(version: 20170124060014) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.integer  "customer"
+    t.integer  "customer_id"
     t.integer  "merchant_id"
     t.text     "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["merchant_id"], name: "index_invoices_on_merchant_id", using: :btree
   end
 
   create_table "items", force: :cascade do |t|
@@ -53,6 +52,5 @@ ActiveRecord::Schema.define(version: 20170124060014) do
 
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
-  add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
 end
