@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170124060014) do
     t.integer  "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
+    t.index ["item_id"], name: "index_invoice_items_on_item_id", using: :btree
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -37,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170124060014) do
     t.text     "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+    t.index ["merchant_id"], name: "index_invoices_on_merchant_id", using: :btree
   end
 
   create_table "items", force: :cascade do |t|
@@ -46,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170124060014) do
     t.integer  "merchant_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["merchant_id"], name: "index_items_on_merchant_id", using: :btree
   end
 
   create_table "merchants", force: :cascade do |t|
@@ -61,4 +66,9 @@ ActiveRecord::Schema.define(version: 20170124060014) do
     t.datetime "updated_at",         null: false
   end
 
+  add_foreign_key "invoice_items", "invoices"
+  add_foreign_key "invoice_items", "items"
+  add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "merchants"
+  add_foreign_key "items", "merchants"
 end
