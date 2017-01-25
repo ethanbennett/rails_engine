@@ -37,7 +37,7 @@ describe "Transactions API" do
     expect(transaction_1).to have_key("result")
     expect(transaction_1).to have_key("credit_card_number")
     expect(transaction_1["result"]).to be_a(String)
-    expect(transaction_1["credit_card_number"]).to be_a(Integer)
+    expect(transaction_1["credit_card_number"]).to be_a(String)
     expect(transaction_1["id"]).to be_a(Integer)
   end
 
@@ -58,7 +58,7 @@ describe "Transactions API" do
       expect(transaction_1).to have_key("result")
       expect(transaction_1).to have_key("credit_card_number")
       expect(transaction_1["result"]).to be_a(String)
-      expect(transaction_1["credit_card_number"]).to be_a(Integer)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
       expect(transaction_1["id"]).to be_a(Integer)
     end
 
@@ -79,7 +79,7 @@ describe "Transactions API" do
       expect(transaction_1).to have_key("result")
       expect(transaction_1).to have_key("credit_card_number")
       expect(transaction_1["result"]).to be_a(String)
-      expect(transaction_1["credit_card_number"]).to be_a(Integer)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
       expect(transaction_1["id"]).to be_a(Integer)
     end
 
@@ -100,7 +100,7 @@ describe "Transactions API" do
       expect(transaction_1).to have_key("result")
       expect(transaction_1).to have_key("credit_card_number")
       expect(transaction_1["result"]).to be_a(String)
-      expect(transaction_1["credit_card_number"]).to be_a(Integer)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
       expect(transaction_1["id"]).to be_a(Integer)
     end
 
@@ -121,7 +121,7 @@ describe "Transactions API" do
       expect(transaction_1).to have_key("result")
       expect(transaction_1).to have_key("credit_card_number")
       expect(transaction_1["result"]).to be_a(String)
-      expect(transaction_1["credit_card_number"]).to be_a(Integer)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
       expect(transaction_1["id"]).to be_a(Integer)
     end
 
@@ -142,7 +142,7 @@ describe "Transactions API" do
       expect(transaction_1).to have_key("result")
       expect(transaction_1).to have_key("credit_card_number")
       expect(transaction_1["result"]).to be_a(String)
-      expect(transaction_1["credit_card_number"]).to be_a(Integer)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
       expect(transaction_1["id"]).to be_a(Integer)
     end
   end
