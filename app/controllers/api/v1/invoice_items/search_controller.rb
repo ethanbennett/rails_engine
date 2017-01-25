@@ -1,11 +1,7 @@
-class Api::V1::Items::SearchController < ApplicationController
-
-  def index
-    render json: Item.where(search_params)
-  end
+class Api::V1::InvoiceItems::SearchController < ApplicationController
 
   def show
-    render json: Item.find_by(search_params)
+    render json: InvoiceItem.find_by(search_params)
   end
 
   private
@@ -13,13 +9,13 @@ class Api::V1::Items::SearchController < ApplicationController
   def search_params
     if params[:unit_price]
       params[:unit_price] = ((params["unit_price"].to_f) * 100.00).to_i
-      items_params
+      invoice_items_params
     else
-      items_params
+      invoice_items_params
     end
   end
 
-  def items_params
+  def invoice_items_params
     params.permit(:id, :item_id, :invoice_id, :unit_price, :quantity, :created_at, :updated_at)
   end
 end

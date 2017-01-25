@@ -112,4 +112,15 @@ describe "Merchants API" do
       expect(merchant_1["id"]).to be_a(Integer)
     end
   end
+
+  context "returns several merchants" do
+    it "when given a created_at" do
+      merchant = create_list(:merchant, 3)
+
+      get "/api/v1/merchants/find_all?#{merchant.first.created_at}"
+
+      merchant_info = [JSON.parse(response.body)]
+      expect(response).to be_success
+    end
+  end
 end

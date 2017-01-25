@@ -40,4 +40,108 @@ describe "Customers API" do
     expect(customer_1["last_name"]).to be_a(String)
     expect(customer_1["id"]).to be_a(Integer)
   end
+
+  context "returns a single customer" do
+    it "returns a single customer when given an id number" do
+      customer = create_list(:customer, 3)
+
+
+      get "/api/v1/customers/find?#{customer.first.id}"
+
+      customer_info = [JSON.parse(response.body)]
+      customer_1  = customer_info.first
+
+      expect(response).to be_success
+      expect(customer_info.count).to eq(1)
+      expect(customer_1).to be_a(Hash)
+      expect(customer_1).to have_key("id")
+      expect(customer_1).to have_key("first_name")
+      expect(customer_1).to have_key("last_name")
+      expect(customer_1["first_name"]).to be_a(String)
+      expect(customer_1["last_name"]).to be_a(String)
+      expect(customer_1["id"]).to be_a(Integer)
+    end
+
+    it "returns a single customer when given a created_at" do
+      customer = create_list(:customer, 3)
+
+
+      get "/api/v1/customers/find?#{customer.first.created_at}"
+
+      customer_info = [JSON.parse(response.body)]
+      customer_1  = customer_info.first
+
+
+      expect(response).to be_success
+      expect(customer_info.count).to eq(1)
+      expect(customer_1).to be_a(Hash)
+      expect(customer_1).to have_key("id")
+      expect(customer_1).to have_key("first_name")
+      expect(customer_1).to have_key("last_name")
+      expect(customer_1["first_name"]).to be_a(String)
+      expect(customer_1["last_name"]).to be_a(String)
+      expect(customer_1["id"]).to be_a(Integer)
+    end
+
+    it "returns a single customer when given a updated_at" do
+      customer = create_list(:customer, 3)
+
+
+      get "/api/v1/customers/find?#{customer.first.updated_at}"
+
+      customer_info = [JSON.parse(response.body)]
+      customer_1  = customer_info.first
+
+
+      expect(response).to be_success
+      expect(customer_info.count).to eq(1)
+      expect(customer_1).to be_a(Hash)
+      expect(customer_1).to have_key("id")
+      expect(customer_1).to have_key("first_name")
+      expect(customer_1).to have_key("last_name")
+      expect(customer_1["first_name"]).to be_a(String)
+      expect(customer_1["last_name"]).to be_a(String)
+      expect(customer_1["id"]).to be_a(Integer)
+    end
+
+    it "returns a single customer when given a first name" do
+      customer = create_list(:customer, 3)
+
+      get "/api/v1/customers/find?#{customer.first.first_name}"
+
+      customer_info = [JSON.parse(response.body)]
+      customer_1  = customer_info.first
+
+
+      expect(response).to be_success
+      expect(customer_info.count).to eq(1)
+      expect(customer_1).to be_a(Hash)
+      expect(customer_1).to have_key("id")
+      expect(customer_1).to have_key("first_name")
+      expect(customer_1).to have_key("last_name")
+      expect(customer_1["first_name"]).to be_a(String)
+      expect(customer_1["last_name"]).to be_a(String)
+      expect(customer_1["id"]).to be_a(Integer)
+    end
+
+    it "returns a single customer when given a last name" do
+      customer = create_list(:customer, 3)
+
+      get "/api/v1/customers/find?#{customer.first.last_name}"
+
+      customer_info = [JSON.parse(response.body)]
+      customer_1  = customer_info.first
+
+
+      expect(response).to be_success
+      expect(customer_info.count).to eq(1)
+      expect(customer_1).to be_a(Hash)
+      expect(customer_1).to have_key("id")
+      expect(customer_1).to have_key("first_name")
+      expect(customer_1).to have_key("last_name")
+      expect(customer_1["first_name"]).to be_a(String)
+      expect(customer_1["last_name"]).to be_a(String)
+      expect(customer_1["id"]).to be_a(Integer)
+    end
+  end
 end
