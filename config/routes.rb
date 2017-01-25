@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
       namespace :merchants do
         get "/find",              to: "search#show"
+        get "/revenue",            to: "revenue#index"
         get "/:id/items",         to: "items#index"
         get "/:id/invoices",      to: "invoices#index"
-        # get "/:id/revenue",       to: "revenue#index"
+        get "/:id/revenue",       to: "revenue#show"
+        get "/:id/favorite_customer", to: "favorite_customer#show"
         get "/find_all", to: "search#index"
       end
       resources :merchants,       only: [:index, :show]
