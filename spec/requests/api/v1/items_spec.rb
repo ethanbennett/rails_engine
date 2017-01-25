@@ -36,7 +36,7 @@ describe "Items API" do
     expect(item_1).to have_key("unit_price")
     expect(item_1).to have_key("merchant_id")
     expect(item_1["description"]).to be_a(String)
-    expect(item_1["unit_price"]).to be_a(Integer)
+    expect(item_1["unit_price"]).to be_a(String)
     expect(item_1["name"]).to be_a(String)
     expect(item_1["id"]).to be_a(Integer)
   end
@@ -60,7 +60,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end
@@ -84,7 +84,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end
@@ -108,7 +108,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end
@@ -131,7 +131,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end
@@ -154,7 +154,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end
@@ -177,7 +177,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end
@@ -200,7 +200,7 @@ describe "Items API" do
       expect(item_1).to have_key("unit_price")
       expect(item_1).to have_key("merchant_id")
       expect(item_1["description"]).to be_a(String)
-      expect(item_1["unit_price"]).to be_a(Integer)
+      expect(item_1["unit_price"]).to be_a(String)
       expect(item_1["name"]).to be_a(String)
       expect(item_1["id"]).to be_a(Integer)
     end

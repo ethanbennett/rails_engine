@@ -37,7 +37,7 @@ describe "Invoice Items API" do
     expect(invoice_item_1).to have_key("quantity")
     expect(invoice_item_1["item_id"]).to be_a(Integer)
     expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-    expect(invoice_item_1["unit_price"]).to be_a(Integer)
+    expect(invoice_item_1["unit_price"]).to be_a(String)
     expect(invoice_item_1["quantity"]).to be_a(Integer)
     expect(invoice_item_1["id"]).to be_a(Integer)
   end
@@ -62,7 +62,7 @@ describe "Invoice Items API" do
       expect(invoice_item_1).to have_key("quantity")
       expect(invoice_item_1["item_id"]).to be_a(Integer)
       expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-      expect(invoice_item_1["unit_price"]).to be_a(Integer)
+      expect(invoice_item_1["unit_price"]).to be_a(String)
       expect(invoice_item_1["quantity"]).to be_a(Integer)
       expect(invoice_item_1["id"]).to be_a(Integer)
     end
@@ -87,7 +87,7 @@ describe "Invoice Items API" do
       expect(invoice_item_1).to have_key("quantity")
       expect(invoice_item_1["item_id"]).to be_a(Integer)
       expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-      expect(invoice_item_1["unit_price"]).to be_a(Integer)
+      expect(invoice_item_1["unit_price"]).to be_a(String)
       expect(invoice_item_1["quantity"]).to be_a(Integer)
       expect(invoice_item_1["id"]).to be_a(Integer)
     end
@@ -112,7 +112,7 @@ describe "Invoice Items API" do
       expect(invoice_item_1).to have_key("quantity")
       expect(invoice_item_1["item_id"]).to be_a(Integer)
       expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-      expect(invoice_item_1["unit_price"]).to be_a(Integer)
+      expect(invoice_item_1["unit_price"]).to be_a(String)
       expect(invoice_item_1["quantity"]).to be_a(Integer)
       expect(invoice_item_1["id"]).to be_a(Integer)
     end
@@ -136,7 +136,7 @@ describe "Invoice Items API" do
       expect(invoice_item_1).to have_key("quantity")
       expect(invoice_item_1["item_id"]).to be_a(Integer)
       expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-      expect(invoice_item_1["unit_price"]).to be_a(Integer)
+      expect(invoice_item_1["unit_price"]).to be_a(String)
       expect(invoice_item_1["quantity"]).to be_a(Integer)
       expect(invoice_item_1["id"]).to be_a(Integer)
     end
@@ -160,7 +160,7 @@ describe "Invoice Items API" do
       expect(invoice_item_1).to have_key("quantity")
       expect(invoice_item_1["item_id"]).to be_a(Integer)
       expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-      expect(invoice_item_1["unit_price"]).to be_a(Integer)
+      expect(invoice_item_1["unit_price"]).to be_a(String)
       expect(invoice_item_1["quantity"]).to be_a(Integer)
       expect(invoice_item_1["id"]).to be_a(Integer)
     end
@@ -184,7 +184,7 @@ describe "Invoice Items API" do
       expect(invoice_item_1).to have_key("quantity")
       expect(invoice_item_1["item_id"]).to be_a(Integer)
       expect(invoice_item_1["invoice_id"]).to be_a(Integer)
-      expect(invoice_item_1["unit_price"]).to be_a(Integer)
+      expect(invoice_item_1["unit_price"]).to be_a(String)
       expect(invoice_item_1["quantity"]).to be_a(Integer)
       expect(invoice_item_1["id"]).to be_a(Integer)
     end

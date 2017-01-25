@@ -1,5 +1,9 @@
 class Api::V1::Items::SearchController < ApplicationController
 
+  def index
+    render json: Item.where(search_params)
+  end
+
   def show
     render json: Item.find_by(search_params)
   end
@@ -13,9 +17,9 @@ class Api::V1::Items::SearchController < ApplicationController
     else
       items_params
     end
-  end
+end
 
   def items_params
-    params.permit(:id, :item_id, :invoice_id, :unit_price, :quantity, :created_at, :updated_at)
+    params.permit(:id, :name, :description, :item_id, :invoice_id, :unit_price, :merchant_id, :quantity, :created_at, :updated_at)
   end
 end
