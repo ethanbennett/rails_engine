@@ -1,7 +1,7 @@
 class Api::V1::Items::SearchController < ApplicationController
 
   def index
-
+    render json: Item.where(search_params)
   end
 
   def show
