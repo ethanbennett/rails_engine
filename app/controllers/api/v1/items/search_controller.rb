@@ -1,6 +1,7 @@
 class Api::V1::Items::SearchController < ApplicationController
 
   def index
+    # binding.pry
     render json: Item.where(search_params)
   end
 
@@ -20,6 +21,6 @@ class Api::V1::Items::SearchController < ApplicationController
   end
 
   def items_params
-    params.permit(:id, :item_id, :invoice_id, :unit_price, :quantity, :created_at, :updated_at)
+    params.permit(:id, :name, :item_id, :invoice_id, :unit_price, :quantity, :created_at, :updated_at)
   end
 end
