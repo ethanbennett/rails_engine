@@ -1,5 +1,9 @@
 class Api::V1::Merchants::SearchController < ApplicationController
 
+  def index
+
+  end
+
   def show
     render json: Merchant.find_by(search_params)
   end

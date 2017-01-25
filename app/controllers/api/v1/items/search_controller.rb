@@ -1,5 +1,9 @@
 class Api::V1::Items::SearchController < ApplicationController
 
+  def index
+
+  end
+
   def show
     render json: Item.find_by(search_params)
   end

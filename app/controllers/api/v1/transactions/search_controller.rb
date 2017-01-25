@@ -1,5 +1,9 @@
 class Api::V1::Transactions::SearchController < ApplicationController
 
+  def index
+
+  end
+
   def show
     render json: Transaction.find_by(search_params)
   end
