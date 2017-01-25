@@ -1,7 +1,7 @@
 class Api::V1::Transactions::SearchController < ApplicationController
 
   def index
-
+    render json: Transaction.where(search_params)
   end
 
   def show
