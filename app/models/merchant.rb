@@ -25,8 +25,8 @@ class Merchant < ApplicationRecord
   #   binding.pry
   # end
 
-  def revenue_totals_serializer
-    RevenueTotalsSerializer
+  def merchant_index_serializer
+    MerchantIndexSerializer
   end
 
   def merchant_revenue_serializer

@@ -1,10 +1,10 @@
 class Api::V1::Merchants::MerchantRevenueController < ApplicationController
+  before_action :calculate_revenues, :set_merchants
 
   def index
     # binding.pry
     limit = params[:quantity].to_i - 1
-    @merchants = Merchant.all
-    render :json => serialize(@merchants, Array), :serializer => RevenueTotalsSerializer
+    render :json => @merchants[0..limit], :each_serializer => MerchantRevenueSerializer
   end
 
   def show
@@ -16,5 +16,15 @@ class Api::V1::Merchants::MerchantRevenueController < ApplicationController
 private
 
   def search_params
+  end
+
+  def calculate_revenues
+    Merchant.all.each do |merchant|
+      merchant.update(revenue: merchant.revenue)
+    end
+  end
+
+  def set_merchants
+    @merchants = Merchant.all.order("revenue DESC")
   end
 end
