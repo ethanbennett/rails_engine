@@ -8,7 +8,7 @@ describe "Invoices API" do
     invoice = invoices.first
 
     expect(response).to be_success
-    expect(invoices.count).to eq(3)
+    expect(invoices.count).to eq(6)
     expect(invoice).to be_a(Hash)
     expect(invoice).to have_key("id")
     expect(invoice).to have_key("customer_id")

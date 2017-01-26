@@ -12,7 +12,7 @@ describe "merchant relationship endpoints" do
       items = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(items.count).to eq(5)
+      expect(items.count).to eq(6)
     end
   end
 

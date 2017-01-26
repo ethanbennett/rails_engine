@@ -16,6 +16,7 @@ gem 'shoulda-matchers', '~> 3.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'smarter_csv'
 gem 'simplecov', :require => false, :group => :test
+gem 'database_cleaner'
 
 group :development, :test do
   gem 'byebug', platform: :mri
