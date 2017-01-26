@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Welcome to Rails Engine!!
+In this project we:
+- Learned how to to build Single-Responsibility controllers to provide a well-designed and versioned API.
+- Learned how to use controller tests to drive our design.
+- Used Ruby and ActiveRecord to perform more complicated business intelligence.
+__________________________________________________________________________________________________________________________________________________________
 
-Things you may want to cover:
+### Preparing Our API
 
-* Ruby version
+#### STEP ONE:
+Copy and paste the following line into your terminal:
+```
+git clone https://github.com/jdconrad89/rails_engine.git
+```
 
-* System dependencies
+#### STEP TWO
+In your terminal type these commands in the following order:
 
-* Configuration
+```
+rake db:create
+```
 
-* Database creation
+```
+rake db:migrate
+```
 
-* Database initialization
+```
+rake import_files
+```
 
-* How to run the test suite
+And there you have it! Look below to see all the information you have access to!
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+__________________________________________________________________________________________________________________________________________________________
