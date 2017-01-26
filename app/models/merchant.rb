@@ -1,5 +1,6 @@
 class Merchant < ApplicationRecord
   has_many :invoices
+  has_many :transactions, through: :invoices
 
   def self.total_revenue(id)
     merchant = Merchant.find(id)
