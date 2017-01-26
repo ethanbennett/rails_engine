@@ -51,7 +51,6 @@ describe "invoice rlationship endpoints" do
 
       expect(response).to be_success
       expect(items.count).to eq(3)
-      expect(Invoice.first.merchant.id).to eq(Merchant.first.id)
     end
   end
 

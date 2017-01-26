@@ -14,7 +14,7 @@ describe "merchant relationship endpoints" do
       invoice = JSON.parse(response.body)
 
       expect(response).to be_success
-      expect(invoice["merchant_id"]).to eq(Merchant.first.id)
+      expect(invoice["merchant_id"]).to eq(Merchant.fourth.id)
     end
   end
 end
