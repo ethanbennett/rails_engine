@@ -18,9 +18,9 @@ class Merchant < ApplicationRecord
   def self.revenue_totals
     merchants = {}
     Merchant.all.each do |merchant|
-      merchants[merchant.name] = merchant.revenue
+      merchants[merchant] = merchant.revenue
     end
-    merchants = merchants.sort_by { |name, revenue| revenue }
+    merchants = merchants.sort_by { |merchant, revenue| revenue }
     merchants.reverse
   end
 
