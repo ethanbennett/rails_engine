@@ -2,7 +2,8 @@ class Api::V1::Merchants::MerchantRevenueController < ApplicationController
 
   def index
     # binding.pry
-    @merchants = Merchant.revenue_totals
+    limit = params[:quantity].to_i - 1
+    @merchants = Merchant.revenue_totals[0..limit]
     render :json => @merchants
   end
 
