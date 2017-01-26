@@ -18,8 +18,6 @@ private
   def search_params
   end
 
-
-
   def set_merchants
     @merchants = Merchant.all.order("revenue DESC")
   end
