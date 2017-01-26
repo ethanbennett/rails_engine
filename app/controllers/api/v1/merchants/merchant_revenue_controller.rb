@@ -1,5 +1,5 @@
 class Api::V1::Merchants::MerchantRevenueController < ApplicationController
-  before_action :calculate_revenues, :set_merchants
+  before_action :set_merchants
 
   def index
     # binding.pry
@@ -18,11 +18,7 @@ private
   def search_params
   end
 
-  def calculate_revenues
-    Merchant.all.each do |merchant|
-      merchant.update(revenue: merchant.revenue)
-    end
-  end
+
 
   def set_merchants
     @merchants = Merchant.all.order("revenue DESC")
