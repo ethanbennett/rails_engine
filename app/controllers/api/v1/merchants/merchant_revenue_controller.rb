@@ -1,6 +1,9 @@
 class Api::V1::Merchants::MerchantRevenueController < ApplicationController
 
   def index
+    # binding.pry
+    @merchants = Merchant.revenue_totals
+    render :json => @merchants
   end
 
   def show

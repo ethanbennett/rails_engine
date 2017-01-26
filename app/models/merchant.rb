@@ -2,7 +2,7 @@ class Merchant < ApplicationRecord
   has_many :invoices
   has_many :transactions, through: :invoices
 
-  def revenue(date)
+  def revenue(date=nil)
     if date
       self.invoices.where(created_at: date)
       .joins(:transactions, :invoice_items)
@@ -14,6 +14,16 @@ class Merchant < ApplicationRecord
       .sum('invoice_items.unit_price * invoice_items.quantity')
     end
   end
+
+  def self.revenue_totals
+    merchants = {}
+    Merchant.all.each do |merchant|
+      merchants[merchant.name] = merchant.revenue
+    end
+    merchants = merchants.sort_by { |name, revenue| revenue }
+    merchants.reverse
+  end
+
 
   def merchant_revenue_serializer
     MerchantRevenueSerializer
