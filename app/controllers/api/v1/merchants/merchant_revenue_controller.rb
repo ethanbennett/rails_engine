@@ -4,7 +4,7 @@ class Api::V1::Merchants::MerchantRevenueController < ApplicationController
   end
 
   def show
-    @revenue =  Merchant.revenue(params[:id])
+    @revenue = Merchant.revenue(params[:id], params["date"])
     render :json => @revenue, :serializer => MerchantRevenueSerializer, :revenue => @revenue
   end
 
