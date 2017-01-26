@@ -40,4 +40,14 @@ task :import_files => :environment do
       Transaction.create!( array.first )
       puts "Created a transaction"
     end
+
+    def calculate_revenues
+      Merchant.record_timestamps = false
+      Merchant.all.each do |merchant|
+        merchant.update(revenue: merchant.revenue)
+        puts "calculating merchant revenue"
+      end
+      Merchant.record_timestamps = true
+    end
+  calculate_revenues
 end
