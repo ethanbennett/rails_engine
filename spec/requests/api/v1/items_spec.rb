@@ -8,7 +8,7 @@ describe "Items API" do
     item = items.first
 
     expect(response).to be_success
-    expect(items.count).to eq(3)
+    expect(items.count).to eq(6)
     expect(item).to be_a(Hash)
     expect(item).to have_key("id")
     expect(item).to have_key("name")
