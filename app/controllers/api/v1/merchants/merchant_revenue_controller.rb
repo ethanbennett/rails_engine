@@ -1,4 +1,4 @@
-class Api::V1::Merchants::RevenueController < ApplicationController
+class Api::V1::Merchants::MerchantRevenueController < ApplicationController
 
   def index
   end
