@@ -10,7 +10,6 @@ describe "invoice rlationship endpoints" do
     it "returns the item associated with the invoice item" do
       create_list(:invoice_item, 5, item_id: Item.first.id)
 
-      byebug
       get "/api/v1/invoice_items/#{Invoice.first.id}/item"
 
       items = JSON.parse(response.body)
