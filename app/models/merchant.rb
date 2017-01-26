@@ -15,15 +15,19 @@ class Merchant < ApplicationRecord
     end
   end
 
-  def self.revenue_totals
-    merchants = {}
-    Merchant.all.each do |merchant|
-      merchants[merchant] = merchant.revenue
-    end
-    merchants = merchants.sort_by { |merchant, revenue| revenue }
-    merchants.reverse
-  end
+  # def sort(merchants)
+  #   merchants = []
+  #   Merchant.all.each do |merchant|
+  #     merchants << [merchant, merchant.revenue]
+  #   end
+  #   merchants = merchants.sort_by { |merchant, revenue| revenue }
+  #   merchants.reverse
+  #   binding.pry
+  # end
 
+  def revenue_totals_serializer
+    RevenueTotalsSerializer
+  end
 
   def merchant_revenue_serializer
     MerchantRevenueSerializer

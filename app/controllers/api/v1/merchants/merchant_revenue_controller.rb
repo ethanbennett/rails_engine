@@ -3,8 +3,8 @@ class Api::V1::Merchants::MerchantRevenueController < ApplicationController
   def index
     # binding.pry
     limit = params[:quantity].to_i - 1
-    @merchants = Merchant.revenue_totals[0..limit]
-    render :json => @merchants
+    @merchants = Merchant.all
+    render :json => serialize(@merchants, Array), :serializer => RevenueTotalsSerializer
   end
 
   def show
