@@ -12,7 +12,7 @@ class Api::V1::Items::SearchController < ApplicationController
 
   def search_params
     if params[:unit_price]
-      params[:unit_price] = ((params["unit_price"].to_f) * 100.00).to_i
+      params[:unit_price] = ((params["unit_price"].to_f) * 100).round(0).to_i
       items_params
     else
       items_params
