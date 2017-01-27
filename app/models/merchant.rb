@@ -9,6 +9,7 @@ class Merchant < ApplicationRecord
   }
 
   def get_revenue(date=nil)
+
     self.invoices.merge(Merchant.date?(date))
     .joins(:transactions, :invoice_items)
     .where(transactions: {result: "success"})

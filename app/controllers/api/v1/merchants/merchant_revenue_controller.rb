@@ -3,13 +3,12 @@ class Api::V1::Merchants::MerchantRevenueController < ApplicationController
 
   def index
     limit = params[:quantity].to_i - 1
-    render :json => @merchants[0..limit], :each_serializer => MerchantRevenueSerializer
+    render :json => @merchants[0..limit], :each_serializer => VerboseRevenueSerializer
   end
 
   def show
     merchant = Merchant.find(params[:id])
-    @revenue = merchant.revenue
-    render :json => @revenue, :serializer => MerchantRevenueSerializer, :revenue => @revenue
+    render :json => merchant, :serializer => MerchantRevenueSerializer, :date => params[:date]
   end
 
 private
