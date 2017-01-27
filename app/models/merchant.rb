@@ -31,4 +31,10 @@ class Merchant < ApplicationRecord
     self.customers.joins(:invoices)
         .select(Invoice.where(status: "pending")).uniq
   end
+
+    def self.most_items(quantity)
+      Merchant.all.joins(invoices: [:transactions, :invoice_items])
+              .merge(Transaction.where(result: "success"))
+              .group(:id).order("sum(invoice_items.quantity) DESC").first(quantity)
+  end
 end
