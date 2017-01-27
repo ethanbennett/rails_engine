@@ -144,4 +144,24 @@ describe "Customers API" do
       expect(customer_1["id"]).to be_a(Integer)
     end
   end
+
+  context "returns many customers" do
+    it "can find all merchants by param" do
+      customer = create_list(:customer, 3)
+      get "/api/v1/customers/find_all?#{customer.first.last_name}"
+
+      customer_info = [JSON.parse(response.body)]
+      customer_1  = customer_info.first
+
+      expect(response).to be_success
+      expect(customer_info[0].count).to_not eq(1)
+      expect(customer_1[0]).to be_a(Hash)
+      expect(customer_1[0]).to have_key("id")
+      expect(customer_1[0]).to have_key("first_name")
+      expect(customer_1[0]).to have_key("last_name")
+      expect(customer_1[0]["first_name"]).to be_a(String)
+      expect(customer_1[0]["last_name"]).to be_a(String)
+      expect(customer_1[0]["id"]).to be_a(Integer)
+    end
+  end
 end
