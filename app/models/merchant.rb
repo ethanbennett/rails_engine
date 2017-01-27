@@ -11,9 +11,9 @@ class Merchant < ApplicationRecord
   def get_revenue(date=nil)
 
     self.invoices.merge(Merchant.date?(date))
-    .joins(:transactions, :invoice_items)
-    .where(transactions: {result: "success"})
-    .sum('invoice_items.unit_price * invoice_items.quantity')
+        .joins(:transactions, :invoice_items)
+        .where(transactions: {result: "success"})
+        .sum('invoice_items.unit_price * invoice_items.quantity')
   end
 
   def self.total_revenue(date)
@@ -23,19 +23,25 @@ class Merchant < ApplicationRecord
 
   def favorite_customer
     self.customers.joins(:transactions)
-    .merge(Transaction.where(result: "success"))
-    .group(:id, :first_name, :last_name)
-    .order("count(customers.id) DESC").first
+        .merge(Transaction.successful)
+        .group(:id, :first_name, :last_name)
+        .order("count(customers.id) DESC").first
   end
 
   def customers_with_pending_invoices
-    self.customers.joins(:invoices)
-        .select(Invoice.where(status: "pending")).uniq
+    Customer.find_by_sql("SELECT customers.* FROM customers
+                          JOIN invoices ON invoices.customer_id = customers.id
+                          WHERE invoices.merchant_id = #{self.id}
+                          EXCEPT
+                          SELECT customers.* FROM customers
+                          JOIN invoices ON invoices.customer_id = customers.id
+                          JOIN transactions ON transactions.invoice_id = invoices.id
+                          WHERE invoices.merchant_id=#{self.id} AND transactions.result ='success'")
   end
 
-    def self.most_items(quantity)
-      Merchant.all.joins(invoices: [:transactions, :invoice_items])
-              .merge(Transaction.where(result: "success"))
-              .group(:id).order("sum(invoice_items.quantity) DESC").first(quantity)
+  def self.most_items(quantity)
+    Merchant.all.joins(invoices: [:transactions, :invoice_items])
+                .merge(Transaction.successful)
+                .group(:id).order("sum(invoice_items.quantity) DESC").first(quantity)
   end
 end
