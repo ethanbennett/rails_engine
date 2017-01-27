@@ -45,7 +45,7 @@ Rails.application.routes.draw do
         get "/most_items",            to: "most_items#index"
       end
       resources :items,               only: [:index, :show]
-      
+
       namespace :merchants do
         get "/find",                  to: "search#show"
         get "/find_all",              to: "search#index"
@@ -55,6 +55,7 @@ Rails.application.routes.draw do
         get "/revenue",               to: "total_revenue#show"
         get "/:id/revenue",           to: "merchant_revenue#show"
         get "/:id/favorite_customer", to: "favorite_customer#show"
+        get "/:id/customers_with_pending_invoices", to: "customers_with_pending_invoices#index"
       end
       resources :merchants,           only: [:index, :show]
 

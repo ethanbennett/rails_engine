@@ -13,7 +13,14 @@ class Item < ApplicationRecord
 
   def self.most_items(quantity)
     joins(invoices: [:transactions])
-        .merge(Transaction.where(result: "success"))
-        .group(:id).order("sum(invoice_items.quantity) DESC").first(quantity)
+         .merge(Transaction.where(result: "success"))
+         .group(:id).order("sum(invoice_items.quantity) DESC").first(quantity)
+  end
+
+  def self.most_revenue(quantity)
+    joins(invoices: [:transactions])
+         .merge(Transaction.where(result: "success")).group(:id)
+         .order("sum(invoice_items.quantity * invoice_items.unit_price) DESC")
+         .first(quantity)
   end
 end
