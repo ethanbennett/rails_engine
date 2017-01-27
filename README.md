@@ -17,6 +17,12 @@ This clones down the api onto your computer.
 
 #### STEP TWO
 In your terminal type these commands in the following order:
+
+```
+cd rails_engine
+```
+This will place you into the API file.
+
 ```
 bundle
 ```
@@ -25,7 +31,7 @@ This installs all the necessary gems you will need to utilize our API.
 ```
 rake db:create
 ```
-This will create the database that you need (please make sure that postgres is downloaded and turned on)
+This will create the database that you need
 
 ```
 rake db:migrate
@@ -35,7 +41,7 @@ This will create the tables for your objects in the database.
 ```
 rake import_files
 ```
-This will download and create all the objects into your database.
+This will download and create all the objects into your database (This will take awhile to complete).
 ```
 rails s
 ```
