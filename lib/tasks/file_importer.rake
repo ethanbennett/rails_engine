@@ -44,7 +44,7 @@ task :import_files => :environment do
     def calculate_revenues
       Merchant.record_timestamps = false
       Merchant.all.each do |merchant|
-        merchant.update(revenue: merchant.revenue)
+        merchant.update(revenue: merchant.get_revenue)
         puts "calculating merchant revenue"
       end
       Merchant.record_timestamps = true
