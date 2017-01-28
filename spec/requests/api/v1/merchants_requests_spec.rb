@@ -123,4 +123,75 @@ describe "Merchants API" do
       expect(response).to be_success
     end
   end
+
+  context "get a merchant's favorite customer" do
+    it "returns a merchant's favorite customer" do
+      create_list(:merchant, 3)
+      create_list(:customer, 2)
+      create_list(:invoice, 2, customer_id: Customer.first.id, merchant_id: Merchant.first.id)
+      create_list(:transaction, 3, invoice_id: Invoice.first.id)
+      create(:invoice, customer_id: Customer.first.id, merchant_id: Merchant.last.id)
+
+      get "/api/v1/merchants/#{Merchant.first.id}/favorite_customer"
+
+      favorite_merchant = JSON.parse(response.body)
+
+      expect(favorite_merchant["id"]).to eq(Customer.first["id"])
+      expect(response).to be_success
+    end
+  end
+
+  context "get a variable amount of the top merchant revenue" do
+    it "returns the top merchant revenue" do
+      create_list(:merchant, 3)
+      create_list(:customer, 2)
+      create_list(:invoice, 2, customer_id: Customer.first.id, merchant_id: Merchant.first.id)
+      create_list(:invoice, 5, customer_id: Customer.first.id, merchant_id: Merchant.second.id)
+      create_list(:transaction, 3, invoice_id: Invoice.first.id)
+      create(:invoice, customer_id: Customer.first.id, merchant_id: Merchant.last.id)
+
+      get "/api/v1/merchants/most_revenue?quantity=2"
+
+      merchant_revenue = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(merchant_revenue.count).to eq(2)
+      expect(merchant_revenue.first["name"]).to eq(Merchant.second.name)
+    end
+  end
+
+  context "returns a random merchant" do
+    it "can find a merchant by name" do
+
+    get '/api/v1/merchants/random'
+
+    merchant = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchant).to have_key("id")
+    expect(merchant).to have_key("name")
+    expect(merchant["name"]).to be_a(String)
+  end
+
+  end
+
+  context 'GET top merchants' do
+    it 'returns top merchant by number of items sold' do
+      create_list(:merchant, 4)
+      create_list(:customer, 2)
+      create_list(:item, 2)
+      create(:invoice, merchant_id: Merchant.first.id, customer_id: Customer.first.id)
+      create(:invoice, merchant_id: Merchant.first.id, customer_id: Customer.last.id)
+      create(:transaction, invoice_id: Invoice.first.id)
+      create(:invoice_item, item_id: Item.first.id, quantity: 16)
+      create(:invoice_item, item_id: Item.second.id, quantity:4)
+      create(:transaction, invoice_id: Invoice.second.id)
+
+      get '/api/v1/merchants/most_items?quantity=2'
+
+      top_merchants = JSON.parse(response.body)
+
+      expect(response).to be_success
+    end
+  end
 end

@@ -224,4 +224,23 @@ describe "Items API" do
       expect(items.count).to eq(2)
     end
   end
+
+  context "get the most items sold" do
+    it "returns the most items" do
+      create_list(:item, 4)
+      create_list(:invoice, 4)
+      create(:transaction, result: 'success', invoice_id: Invoice.first.id)
+      create(:transaction, result: 'success', invoice_id: Invoice.last.id)
+      create(:invoice_item, invoice_id: Invoice.first.id, item_id: Item.first.id, quantity: 15, unit_price: 5)
+      create(:invoice_item, invoice_id: Invoice.second.id, item_id: Item.first.id, quantity: 15, unit_price: 5)
+      create(:invoice_item, invoice_id: Invoice.last.id, item_id: Item.last.id, quantity: 12, unit_price: 2)
+
+      get '/api/v1/items/most_items?quantity=2'
+
+      items = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(items.count).to eq(2)
+    end
+  end
 end
