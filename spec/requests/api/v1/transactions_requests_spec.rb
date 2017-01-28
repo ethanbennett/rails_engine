@@ -146,4 +146,110 @@ describe "Transactions API" do
       expect(transaction_1["id"]).to be_a(Integer)
     end
   end
+
+  context "returns all transactions" do
+    it "returns all transactions when given an id number" do
+      transaction = create_list(:transaction, 3)
+
+
+      get "/api/v1/transactions/find_all?#{transaction.first.id}"
+
+      transaction_info = JSON.parse(response.body)
+      transaction_1  = transaction_info.first
+
+      expect(response).to be_success
+      expect(transaction_info.count).to eq(3)
+      expect(transaction_1).to be_a(Hash)
+      expect(transaction_1).to have_key("id")
+      expect(transaction_1).to have_key("result")
+      expect(transaction_1).to have_key("credit_card_number")
+      expect(transaction_1["result"]).to be_a(String)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
+      expect(transaction_1["id"]).to be_a(Integer)
+    end
+
+    it "returns all transactions when given a created_at" do
+      transaction = create_list(:transaction, 3)
+
+
+      get "/api/v1/transactions/find_all?#{transaction.first.created_at}"
+
+      transaction_info = JSON.parse(response.body)
+      transaction_1  = transaction_info.first
+
+
+      expect(response).to be_success
+      expect(transaction_info.count).to eq(3)
+      expect(transaction_1).to be_a(Hash)
+      expect(transaction_1).to have_key("id")
+      expect(transaction_1).to have_key("result")
+      expect(transaction_1).to have_key("credit_card_number")
+      expect(transaction_1["result"]).to be_a(String)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
+      expect(transaction_1["id"]).to be_a(Integer)
+    end
+
+    it "returns all transactions when given a updated_at" do
+      transaction = create_list(:transaction, 3)
+
+
+      get "/api/v1/transactions/find_all?#{transaction.first.updated_at}"
+
+      transaction_info = JSON.parse(response.body)
+      transaction_1  = transaction_info.first
+
+
+      expect(response).to be_success
+      expect(transaction_info.count).to eq(3)
+      expect(transaction_1).to be_a(Hash)
+      expect(transaction_1).to have_key("id")
+      expect(transaction_1).to have_key("result")
+      expect(transaction_1).to have_key("credit_card_number")
+      expect(transaction_1["result"]).to be_a(String)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
+      expect(transaction_1["id"]).to be_a(Integer)
+    end
+
+    it "returns all transactions when given a credit card number" do
+      transaction = create_list(:transaction, 3)
+
+
+      get "/api/v1/transactions/find_all?#{transaction.first.credit_card_number}"
+
+      transaction_info = JSON.parse(response.body)
+      transaction_1  = transaction_info.first
+
+
+      expect(response).to be_success
+      expect(transaction_info.count).to eq(3)
+      expect(transaction_1).to be_a(Hash)
+      expect(transaction_1).to have_key("id")
+      expect(transaction_1).to have_key("result")
+      expect(transaction_1).to have_key("credit_card_number")
+      expect(transaction_1["result"]).to be_a(String)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
+      expect(transaction_1["id"]).to be_a(Integer)
+    end
+
+    it "returns all transactions when given a result" do
+      transaction = create_list(:transaction, 3)
+
+
+      get "/api/v1/transactions/find_all?#{transaction.first.result}"
+
+      transaction_info = JSON.parse(response.body)
+      transaction_1  = transaction_info.first
+
+
+      expect(response).to be_success
+      expect(transaction_info.count).to eq(3)
+      expect(transaction_1).to be_a(Hash)
+      expect(transaction_1).to have_key("id")
+      expect(transaction_1).to have_key("result")
+      expect(transaction_1).to have_key("credit_card_number")
+      expect(transaction_1["result"]).to be_a(String)
+      expect(transaction_1["credit_card_number"]).to be_a(String)
+      expect(transaction_1["id"]).to be_a(Integer)
+    end
+  end
 end
